@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hasil CNN Tokopedia</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    body { background: #f8fafc; }
+    .card { border: 0; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,.06); }
+    .plot-card img { border-radius: 16px; }
+    .metric {
+      border-radius: 18px;
+      background: linear-gradient(135deg, #0d6efd, #6f42c1);
+      color: white;
+      box-shadow: 0 12px 28px rgba(13,110,253,.22);
+    }
+    pre { white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-primary" href="/">CNN Teks Tokopedia</a>
+    <div class="ms-auto">
+      <a href="/" class="btn btn-outline-primary me-2">Beranda</a>
+      <a href="/hasil" class="btn btn-primary">Refresh Hasil</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-4">
+  {% if prediction %}
+  <div class="alert alert-info shadow-sm">
+    <div class="d-flex align-items-start gap-3">
+      <div class="fs-3"><i class="bi bi-stars"></i></div>
+      <div>
+        <div class="fw-semibold">Hasil Prediksi Teks</div>
+        <div><strong>Label:</strong> {{ prediction.label }} | <strong>Confidence:</strong> {{ "%.2f"|format(prediction.confidence * 100) }}%</div>
+        <div class="mt-2"><strong>Teks:</strong> {{ prediction.text }}</div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="row g-4 mb-4">
+    <div class="col-md-3">
+      <div class="metric p-3 h-100">
+        <div class="small opacity-75">Accuracy</div>
+        <div class="display-6 fw-bold">{{ "%.4f"|format(report.accuracy or 0) }}</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="metric p-3 h-100">
+        <div class="small opacity-75">Loss</div>
+        <div class="display-6 fw-bold">{{ "%.4f"|format(report.loss or 0) }}</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="metric p-3 h-100">
+        <div class="small opacity-75">Macro F1</div>
+        <div class="display-6 fw-bold">{{ "%.4f"|format(report.macro_f1 or 0) }}</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="metric p-3 h-100">
+        <div class="small opacity-75">Jumlah Kelas</div>
+        <div class="display-6 fw-bold">{{ report.class_names|length }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-4 mb-4">
+    <h4 class="mb-3">Ringkasan Model</h4>
+    <div class="row g-3">
+      <div class="col-lg-6">
+        <ul class="mb-0">
+          <li><strong>Dataset:</strong> {{ report.dataset }}</li>
+          <li><strong>Jumlah baris:</strong> {{ report.rows }}</li>
+          <li><strong>Kelas:</strong> {{ report.class_names }}</li>
+        </ul>
+      </div>
+      <div class="col-lg-6">
+        <pre class="bg-light p-3 rounded-3 mb-0">{{ report.classification_report_text }}</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-4 mb-4">
+    <h4 class="mb-3">Visualisasi Utama</h4>
+    <div class="row g-4">
+      {% for plot in plots %}
+      <div class="col-lg-6">
+        <div class="card plot-card p-3 h-100">
+          <img src="{{ plot.path }}" class="img-fluid mb-3" alt="{{ plot.title }}">
+          <h5 class="mb-1">{{ plot.title }}</h5>
+          <p class="text-muted mb-0">{{ plot.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="card p-4">
+    <h4 class="mb-3">Petunjuk Praktikum</h4>
+    <ol class="mb-0">
+      <li>Bandingkan distribusi rating dan distribusi sentimen.</li>
+      <li>Perhatikan wordcloud dan top words untuk memahami karakter data.</li>
+      <li>Lihat grafik accuracy dan loss untuk membaca proses belajar model.</li>
+      <li>Analisis confusion matrix untuk melihat kelas yang paling sering tertukar.</li>
+      <li>Coba beberapa kalimat baru pada halaman beranda untuk melihat prediksi model.</li>
+    </ol>
+  </div>
+</div>
+</body>
+</html>

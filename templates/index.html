@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Praktikum CNN Teks Tokopedia</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    body { background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%); }
+    .hero {
+      background: linear-gradient(135deg, #0d6efd, #6f42c1);
+      color: white;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(13,110,253,.18);
+    }
+    .card {
+      border: 0;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.06);
+    }
+    .step-icon {
+      width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 14px; background: rgba(13,110,253,.1); color: #0d6efd; font-size: 1.4rem;
+    }
+    .mini-pill { font-size: .85rem; }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-primary" href="/">CNN Teks Tokopedia</a>
+    <div class="ms-auto">
+      <a href="/hasil" class="btn btn-primary">Lihat Hasil</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-4">
+  <div class="hero p-4 p-md-5 mb-4">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-8">
+        <span class="badge bg-light text-primary mb-3">Praktikum Kaggle + NLP + CNN</span>
+        <h1 class="display-6 fw-bold">Pengenalan Kaggle dan CNN Teks dengan Review Tokopedia</h1>
+        <p class="lead mb-0">
+          Mahasiswa belajar mencari dataset di Kaggle, membaca CSV, melakukan eksplorasi data,
+          lalu melatih model CNN untuk klasifikasi sentimen review.
+        </p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <div class="bg-white text-dark rounded-4 p-3 shadow-sm">
+          <div class="fw-semibold">Status Model</div>
+          {% if model_ready %}
+            <span class="badge text-bg-success mt-2">Model siap digunakan</span>
+          {% else %}
+            <span class="badge text-bg-warning mt-2">Jalankan cnn.py dulu</span>
+          {% endif %}
+          <div class="small text-muted mt-2">Dataset, grafik, dan model akan muncul setelah training selesai.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} shadow-sm">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <div class="row g-4 mb-4">
+    <div class="col-md-3">
+      <div class="card p-3 h-100">
+        <div class="step-icon mb-3"><i class="bi bi-cloud-download"></i></div>
+        <h5>1. Kaggle</h5>
+        <p class="mb-0 text-muted">Cari dataset Tokopedia Product Reviews dan simpan file CSV ke folder <code>data/</code>.</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-3 h-100">
+        <div class="step-icon mb-3"><i class="bi bi-file-earmark-text"></i></div>
+        <h5>2. ambil_data.py</h5>
+        <p class="mb-0 text-muted">Membaca dataset, menampilkan info kolom, dan menghasilkan grafik awal.</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-3 h-100">
+        <div class="step-icon mb-3"><i class="bi bi-cpu"></i></div>
+        <h5>3. cnn.py</h5>
+        <p class="mb-0 text-muted">Preprocessing, tokenisasi, padding, training CNN, dan evaluasi model.</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-3 h-100">
+        <div class="step-icon mb-3"><i class="bi bi-window-stack"></i></div>
+        <h5>4. Flask Web</h5>
+        <p class="mb-0 text-muted">Tampilkan grafik, metrik, dan prediksi teks baru di halaman hasil.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="card p-4">
+        <h4 class="mb-3">Alur Praktikum</h4>
+        <ol class="mb-0">
+          <li>Jelajahi Kaggle dan pahami struktur dataset review.</li>
+          <li>Unduh atau salin CSV ke folder <code>data/</code>.</li>
+          <li>Jalankan <code>ambil_data.py</code> untuk melihat isi data dan grafik awal.</li>
+          <li>Jalankan <code>cnn.py</code> untuk membersihkan teks, melatih model, dan menyimpan visualisasi.</li>
+          <li>Buka <code>app.py</code> untuk menampilkan hasil dan mencoba prediksi kalimat baru.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="col-lg-5">
+      <div class="card p-4">
+        <h4 class="mb-3">Contoh Perintah</h4>
+        <pre class="bg-light p-3 rounded-3 mb-0"><code>pip install -r requirements.txt
+python ambil_data.py --download
+python cnn.py
+python app.py</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-4 mt-4">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <div>
+        <h4 class="mb-1">Coba Prediksi Review</h4>
+        <p class="text-muted mb-0">Masukkan kalimat ulasan untuk melihat prediksi sentimen model.</p>
+      </div>
+      <a href="/hasil" class="btn btn-outline-primary">Buka Halaman Hasil</a>
+    </div>
+    <form class="mt-3" method="post" action="/predict">
+      <textarea name="text" class="form-control form-control-lg" rows="4" placeholder="Contoh: Barang bagus, pengiriman cepat, sangat puas dengan kualitasnya."></textarea>
+      <div class="d-flex justify-content-end mt-3">
+        <button type="submit" class="btn btn-primary btn-lg">Prediksi Sentimen</button>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>
