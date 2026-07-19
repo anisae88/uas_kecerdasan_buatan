@@ -1,0 +1,67 @@
+[
+  {
+    "file": "plots/eda_distribusi_rating.png",
+    "title": "Distribusi Rating",
+    "description": "Sebaran rating ulasan."
+  },
+  {
+    "file": "plots/eda_distribusi_sentimen.png",
+    "title": "Distribusi Sentimen",
+    "description": "Sebaran kelas sentimen."
+  },
+  {
+    "file": "plots/eda_panjang_karakter.png",
+    "title": "Panjang Review",
+    "description": "Histogram panjang review."
+  },
+  {
+    "file": "plots/eda_boxplot_panjang_kata.png",
+    "title": "Boxplot Panjang Kata",
+    "description": "Perbandingan panjang review antar kelas."
+  },
+  {
+    "file": "plots/eda_wordcloud_positif.png",
+    "title": "WordCloud Positif",
+    "description": "Kata yang sering muncul pada ulasan positif."
+  },
+  {
+    "file": "plots/eda_wordcloud_negatif.png",
+    "title": "WordCloud Negatif",
+    "description": "Kata yang sering muncul pada ulasan negatif."
+  },
+  {
+    "file": "plots/eda_top_kata_positif.png",
+    "title": "Top Kata Positif",
+    "description": "Frekuensi kata pada ulasan positif."
+  },
+  {
+    "file": "plots/eda_top_kata_negatif.png",
+    "title": "Top Kata Negatif",
+    "description": "Frekuensi kata pada ulasan negatif."
+  },
+  {
+    "file": "plots/cnn_accuracy.png",
+    "title": "Accuracy CNN",
+    "description": "Grafik akurasi training dan validasi."
+  },
+  {
+    "file": "plots/cnn_loss.png",
+    "title": "Loss CNN",
+    "description": "Grafik loss training dan validasi."
+  },
+  {
+    "file": "plots/cnn_confusion_matrix.png",
+    "title": "Confusion Matrix",
+    "description": "Matriks kesalahan prediksi model."
+  },
+  {
+    "file": "plots/cnn_roc_multiclass.png",
+    "title": "ROC Curve",
+    "description": "Kurva ROC untuk setiap kelas."
+  },
+  {
+    "file": "plots/cnn_precision_recall.png",
+    "title": "Precision-Recall",
+    "description": "Kurva precision-recall multiclass."
+  }
+]

@@ -1,0 +1,129 @@
+{
+  "dataset": "data\\tokopedia_reviews.csv",
+  "rows": 198,
+  "columns": [
+    "rating",
+    "text",
+    "sentimen",
+    "panjang_karakter",
+    "panjang_kata"
+  ],
+  "rating_col": "rating",
+  "text_col": "text",
+  "sentimen_counts": {
+    "Negatif": 66,
+    "Netral": 66,
+    "Positif": 66
+  },
+  "class_names": [
+    "Negatif",
+    "Netral",
+    "Positif"
+  ],
+  "accuracy": 0.5249999761581421,
+  "loss": 1.0646060705184937,
+  "macro_f1": 0.5210602759622368,
+  "macro_precision": 0.6688963210702341,
+  "macro_recall": 0.5238095238095238,
+  "classification_report": {
+    "Negatif": {
+      "precision": 1.0,
+      "recall": 0.3076923076923077,
+      "f1-score": 0.47058823529411764,
+      "support": 13.0
+    },
+    "Netral": {
+      "precision": 0.391304347826087,
+      "recall": 0.6923076923076923,
+      "f1-score": 0.5,
+      "support": 13.0
+    },
+    "Positif": {
+      "precision": 0.6153846153846154,
+      "recall": 0.5714285714285714,
+      "f1-score": 0.5925925925925926,
+      "support": 14.0
+    },
+    "accuracy": 0.525,
+    "macro avg": {
+      "precision": 0.6688963210702341,
+      "recall": 0.5238095238095238,
+      "f1-score": 0.5210602759622368,
+      "support": 40.0
+    },
+    "weighted avg": {
+      "precision": 0.6675585284280937,
+      "recall": 0.525,
+      "f1-score": 0.5228485838779957,
+      "support": 40.0
+    }
+  },
+  "classification_report_text": "              precision    recall  f1-score   support\n\n     Negatif       1.00      0.31      0.47        13\n      Netral       0.39      0.69      0.50        13\n     Positif       0.62      0.57      0.59        14\n\n    accuracy                           0.53        40\n   macro avg       0.67      0.52      0.52        40\nweighted avg       0.67      0.53      0.52        40\n",
+  "plots": [
+    {
+      "file": "plots/eda_distribusi_rating.png",
+      "title": "Distribusi Rating",
+      "description": "Sebaran rating ulasan."
+    },
+    {
+      "file": "plots/eda_distribusi_sentimen.png",
+      "title": "Distribusi Sentimen",
+      "description": "Sebaran kelas sentimen."
+    },
+    {
+      "file": "plots/eda_panjang_karakter.png",
+      "title": "Panjang Review",
+      "description": "Histogram panjang review."
+    },
+    {
+      "file": "plots/eda_boxplot_panjang_kata.png",
+      "title": "Boxplot Panjang Kata",
+      "description": "Perbandingan panjang review antar kelas."
+    },
+    {
+      "file": "plots/eda_wordcloud_positif.png",
+      "title": "WordCloud Positif",
+      "description": "Kata yang sering muncul pada ulasan positif."
+    },
+    {
+      "file": "plots/eda_wordcloud_negatif.png",
+      "title": "WordCloud Negatif",
+      "description": "Kata yang sering muncul pada ulasan negatif."
+    },
+    {
+      "file": "plots/eda_top_kata_positif.png",
+      "title": "Top Kata Positif",
+      "description": "Frekuensi kata pada ulasan positif."
+    },
+    {
+      "file": "plots/eda_top_kata_negatif.png",
+      "title": "Top Kata Negatif",
+      "description": "Frekuensi kata pada ulasan negatif."
+    },
+    {
+      "file": "plots/cnn_accuracy.png",
+      "title": "Accuracy CNN",
+      "description": "Grafik akurasi training dan validasi."
+    },
+    {
+      "file": "plots/cnn_loss.png",
+      "title": "Loss CNN",
+      "description": "Grafik loss training dan validasi."
+    },
+    {
+      "file": "plots/cnn_confusion_matrix.png",
+      "title": "Confusion Matrix",
+      "description": "Matriks kesalahan prediksi model."
+    },
+    {
+      "file": "plots/cnn_roc_multiclass.png",
+      "title": "ROC Curve",
+      "description": "Kurva ROC untuk setiap kelas."
+    },
+    {
+      "file": "plots/cnn_precision_recall.png",
+      "title": "Precision-Recall",
+      "description": "Kurva precision-recall multiclass."
+    }
+  ]
+}
